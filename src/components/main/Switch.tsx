@@ -12,7 +12,7 @@ export const Switch: React.FC<SwitchProps> = ({ activeTab, setActiveTab }) => {
     <div className="flex justify-center mb-8">
       <div className="bg-white rounded-full p-1 flex shadow-md">
         <button
-          className={`font-medium text-lg flex items-center px-4 py-2 rounded-full transition-colors ${
+          className={`text-base md:font-medium md:text-lg flex items-center px-4 py-2 rounded-full transition-colors ${
             activeTab === ServiceEnum.URL ? "bg-gray-900 text-white" : "text-text"
           }`}
           onClick={() => setActiveTab(ServiceEnum.URL)}
@@ -21,7 +21,7 @@ export const Switch: React.FC<SwitchProps> = ({ activeTab, setActiveTab }) => {
           URL Shortener
         </button>
         <button
-          className={`font-medium text-lg flex items-center px-4 py-2 rounded-full transition-colors ${
+          className={`text-base md:font-medium md:text-lg flex items-center px-4 py-2 rounded-full transition-colors ${
             activeTab === ServiceEnum.QR ? "bg-gray-900 text-white" : "text-text"
           }`}
           onClick={() => setActiveTab(ServiceEnum.QR)}

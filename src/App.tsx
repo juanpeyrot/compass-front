@@ -4,6 +4,7 @@ import { Navbar } from "./components/navbar";
 import { Switch } from "./components/main/Switch";
 import { ServiceEnum } from "./types";
 import { QRGenerator, URLShortener } from "./components/main";
+import { Footer } from "./components/footer";
 
 
 export const App = () => {
@@ -21,6 +22,7 @@ export const App = () => {
           </div>
         </div>
       </main>
+			<Footer />
 		</div>
 	)
 }
