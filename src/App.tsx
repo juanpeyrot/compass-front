@@ -1,28 +1,21 @@
-import { useState } from "react";
-import { Hero } from "./components/hero";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { Navbar } from "./components/navbar";
-import { Switch } from "./components/main/Switch";
-import { ServiceEnum } from "./types";
-import { QRGenerator, URLShortener } from "./components/main";
 import { Footer } from "./components/footer";
-
+import { HomePage } from "./pages/Home";
+import { Dashboard } from "./pages";
 
 export const App = () => {
-	const [activeTab, setActiveTab] = useState<ServiceEnum>(ServiceEnum.URL)
-
-	return (
-		<div className="min-h-screen bg-background flex flex-col">
-			<Navbar />
-			<Hero />
-			<main className="bg-gray-200 flex-grow -mt-16 relative z-10">
-        <div className="container mx-auto px-4 py-12">
-          <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6">
-            <Switch activeTab={activeTab} setActiveTab={setActiveTab} />
-            {activeTab === "url" ? <URLShortener /> : <QRGenerator />}
-          </div>
-        </div>
-      </main>
-			<Footer />
-		</div>
-	)
-}
+  return (
+    <Router>
+      <div className="min-h-screen bg-background flex flex-col bg-gray-900">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+					<Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
+  );
+};
