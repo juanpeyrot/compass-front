@@ -10,9 +10,11 @@ export const Navbar = () => {
     <nav className={`${pathname == "/" ? "absolute z-20" : "relative"} bg-transparent w-full`}>
       <div className="px-4 md:px-20 w-full">
         <div className="flex justify-between items-center py-4">
-          <div className="flex items-center">
+          <Link
+					to="/"
+					className="flex items-center cursor-pointer">
             <CompassLogo className="h-20 w-20 mr-2 text-white" />
-          </div>
+          </Link>
           <div className="flex space-x-4">
             <Link to={"/login"} className="text-lg font-medium flex items-center gap-3 bg-accent text-white hover:text-orange-500 px-4 py-2 rounded-md transition-colors">
               <LogIn />

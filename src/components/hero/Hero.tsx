@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Stars } from "./";
 
 
@@ -9,11 +10,12 @@ export const Hero = () => {
         <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">Navigate the web with Compass</h1>
         <p className="text-xl md:text-2xl mb-8 text-gray-300">Shorten URLs and generate QR Codes in seconds</p>
         <div className="flex justify-center space-x-4">
-          <button
+          <Link
+						to="/dashboard"
             className="text-3xl py-2 px-5 bg-white text-primary hover:bg-transparent hover:text-white font-bold transition-colors"
           >
             Get Started
-          </button>
+          </Link>
         </div>
       </div>
     </div>

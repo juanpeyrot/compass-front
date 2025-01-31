@@ -8,7 +8,7 @@ interface ProtectedRouteProps {
 	redirectPath?: string;
 }
 
-export const ProtectedRoute = ({ children, redirectPath = "/" }: ProtectedRouteProps) => {
+export const ProtectedRoute = ({ children, redirectPath = "/login" }: ProtectedRouteProps) => {
 
 	const { user } = useUserStore();
 
