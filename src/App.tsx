@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
-import { Dashboard, LoginPage, HomePage } from "./pages";
+import { Dashboard, LoginPage, HomePage, RegisterPage } from "./pages";
 import { ProtectedRoute } from "./pages/ProtectedRoute";
 
 export const App = () => {
@@ -20,6 +20,7 @@ export const App = () => {
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
           <Route path="/login" element={<LoginPage />} />
+					<Route path="/register" element={<RegisterPage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />

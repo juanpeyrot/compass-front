@@ -1,6 +1,6 @@
 import { LogIn } from "lucide-react";
 import { CompassLogo } from "./";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 export const Navbar = () => {
@@ -14,10 +14,10 @@ export const Navbar = () => {
             <CompassLogo className="h-20 w-20 mr-2 text-white" />
           </div>
           <div className="flex space-x-4">
-            <a href="#" className="text-lg font-medium flex items-center gap-3 bg-accent text-white hover:text-orange-500 px-4 py-2 rounded-md transition-colors">
+            <Link to={"/login"} className="text-lg font-medium flex items-center gap-3 bg-accent text-white hover:text-orange-500 px-4 py-2 rounded-md transition-colors">
               <LogIn />
 							Log In
-            </a>
+            </Link>
           </div>
         </div>
       </div>

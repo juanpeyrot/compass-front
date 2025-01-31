@@ -2,9 +2,9 @@ import { AuthForm } from "../components/forms";
 import { CompassLogo } from "../components/navbar";
 import { TAuthFormValidator } from "../types/zod";
 
-export const LoginPage = () => {
+export const RegisterPage = () => {
   const onSubmit = (data: TAuthFormValidator) => {
-    console.log("Login Data:", data);
+    console.log("Register Data:", data);
   };
 
   return (
@@ -14,9 +14,9 @@ export const LoginPage = () => {
           <CompassLogo className="size-32" />
         </div>
         <h2 className="text-4xl font-extrabold text-primary text-center">
-          Sign in to your account
+          Create a new account
         </h2>
-        <AuthForm isLogin={true} onSubmit={onSubmit} />
+        <AuthForm isLogin={false} onSubmit={onSubmit} />
       </div>
     </div>
   );
