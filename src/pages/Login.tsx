@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Lock, GitlabIcon as GitHub, User } from "lucide-react";
+import { Mail, Lock, Github, User } from "lucide-react";
 
 export const LoginPage = () => {
   const [isLogin, setIsLogin] = useState(true)
@@ -135,7 +135,7 @@ export const LoginPage = () => {
                 className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
               >
                 <span className="sr-only">Sign in with GitHub</span>
-                <GitHub size={20} />
+                <Github size={20} />
               </button>
             </div>
           </div>

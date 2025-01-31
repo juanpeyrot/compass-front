@@ -1,8 +1,13 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
-import { HomePage } from "./pages/Home";
-import { Dashboard } from "./pages";
+import { Dashboard, LoginPage, HomePage } from "./pages";
+import { ProtectedRoute } from "./pages/ProtectedRoute";
 
 export const App = () => {
   return (
@@ -11,8 +16,11 @@ export const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-					<Route path="*" element={<Navigate to="/" />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
       </div>
