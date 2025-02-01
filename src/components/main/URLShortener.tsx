@@ -51,7 +51,7 @@ export const URLShortener = () => {
         />
         <button
           type="submit"
-          className="w-full bg-accent hover:bg-accent-light text-white font-bold py-2 px-4 rounded-md transition-colors"
+          className="bg-gray-900 w-full py-2 px-4 text-white rounded-md hover:bg-primary-dark focus:ring-primary"
         >
           Shorten
         </button>

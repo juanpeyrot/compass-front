@@ -31,15 +31,14 @@ export const useUserStore = create<IUserStore>((set) => ({
     }
   },
 
-  logout: () => {
-    axios
-      .post(
-        `${import.meta.env.VITE_SERVICE_URL}/auth/logout`,
-        {},
-        { withCredentials: true }
-      )
-      .finally(() => {
-        set({ user: null });
-      });
-  },
+  logout: async () => {
+		try {
+			await fetch(`${import.meta.env.VITE_SERVICE_URL}/auth/logout`, {
+				method: "POST",
+				credentials: "include",
+			});
+		} finally {
+			set({ user: null });
+		}
+	},	
 }));

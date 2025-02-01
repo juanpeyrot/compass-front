@@ -7,10 +7,6 @@ export const UserSettings = () => {
     email: "johndoe@example.com",
   })
 
-  const handleExport = () => {
-    console.log("Exporting user data...")
-  }
-
   const handleDeleteAccount = () => {
     console.log("Deleting account...")
   }
@@ -31,13 +27,6 @@ export const UserSettings = () => {
         </div>
       </div>
       <div className="space-y-4">
-        <button
-          className="flex items-center px-4 py-2 bg-accent text-white rounded-md hover:bg-accent-light transition-colors"
-          onClick={handleExport}
-        >
-          <Download size={18} className="mr-2" />
-          Export All Links
-        </button>
         <button
           className="flex items-center px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
           onClick={handleDeleteAccount}
