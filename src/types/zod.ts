@@ -1,4 +1,5 @@
 import { z } from "zod";
-import { FormValidator } from "../lib";
+import { RegisterFormValidator, LoginFormValidator } from "../lib";
 
-export type TAuthFormValidator = z.infer<typeof FormValidator>;
+export type TRegisterFormValidator = z.infer<typeof RegisterFormValidator>;
+export type TLoginFormValidator = z.infer<typeof LoginFormValidator>;

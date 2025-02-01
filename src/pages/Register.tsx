@@ -1,14 +1,34 @@
-import { AuthForm } from "../components/forms";
+import { RegisterForm } from "../components/forms";
 import { CompassLogo } from "../components/navbar";
-import { TAuthFormValidator } from "../types/zod";
+import { TRegisterFormValidator } from "../types/zod";
+import { useFetch } from "../hooks/useFetch";
+import { useUserStore } from "../store";
+import { useNavigate } from "react-router-dom";
+import { LoginUser } from "../types";
+import { useEffect } from "react";
 
 export const RegisterPage = () => {
-  const onSubmit = (data: TAuthFormValidator) => {
-    console.log("Register Data:", data);
+  const { setUser } = useUserStore();
+  const navigate = useNavigate();
+  const { data, error, loading, fetchData } = useFetch<LoginUser>(
+    `${import.meta.env.VITE_SERVICE_URL}/auth/register`
+  );
+
+  const onSubmit = async (formData: TRegisterFormValidator) => {
+    await fetchData({
+      method: "POST",
+      body: JSON.stringify(formData),
+    });
   };
 
+  useEffect(() => {
+    if (!data) return;
+    setUser(data.user);
+    navigate("/dashboard");
+  }, [data]);
+
   return (
-    <div className="min-h-screen flex items-center justify-center py-16 px-6">
+    <div className="min-h-screen flex items-start justify-center py-16 px-6">
       <div className="max-w-lg w-full space-y-10 shadow-xl rounded-3xl p-10 bg-white">
         <div className="flex justify-center">
           <CompassLogo className="size-32" />
@@ -16,7 +36,11 @@ export const RegisterPage = () => {
         <h2 className="text-4xl font-extrabold text-primary text-center">
           Create a new account
         </h2>
-        <AuthForm isLogin={false} onSubmit={onSubmit} />
+
+        {loading && <p className="text-center text-gray-600">Loading...</p>}
+        {error && <p className="text-center text-red-500">{error}</p>}
+
+        <RegisterForm onSubmit={onSubmit} />
       </div>
     </div>
   );
