@@ -37,10 +37,9 @@ export const RegisterPage = () => {
           Create a new account
         </h2>
 
-        {loading && <p className="text-center text-gray-600">Loading...</p>}
         {error && <p className="text-center text-red-500">{error}</p>}
 
-        <RegisterForm onSubmit={onSubmit} />
+        <RegisterForm isLoading={loading} onSubmit={onSubmit} />
       </div>
     </div>
   );

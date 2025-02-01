@@ -9,8 +9,11 @@ import { useEffect } from "react";
 
 export const LoginPage = () => {
   const { setUser } = useUserStore();
-  const { data, fetchData } = useFetch<LoginUser>(
+  const { data, loading, error, fetchData } = useFetch<LoginUser>(
     `${import.meta.env.VITE_SERVICE_URL}/auth/login`
+  );
+	const { data: loggedUserData, fetchData: fetchLoggedUserData, loading: loadingLoggedUser } = useFetch<LoginUser>(
+    `${import.meta.env.VITE_SERVICE_URL}/auth/me`
   );
 	const navigate = useNavigate();
 
@@ -20,6 +23,22 @@ export const LoginPage = () => {
       body: JSON.stringify(formData),
     });
   };
+
+	useEffect(() => {
+		const tryGetLoggedUser = async () => {
+			await fetchLoggedUserData({
+				method: "GET",
+			});
+		}
+
+		tryGetLoggedUser();
+	}, [])
+
+	useEffect(() => {
+		if (!loggedUserData) return;
+		setUser(loggedUserData.user);
+		navigate("/dashboard");
+	}, [loggedUserData]);
 
 	useEffect(() => {
 		if (!data) return;
@@ -36,7 +55,8 @@ export const LoginPage = () => {
         <h2 className="text-4xl font-extrabold text-primary text-center">
           Sign in to your account
         </h2>
-        <LoginForm onSubmit={onSubmit} />
+				{error && <p className="text-center text-red-500">{error}</p>}
+        <LoginForm isLoading={loading || loadingLoggedUser} onSubmit={onSubmit} />
       </div>
     </div>
   );

@@ -3,13 +3,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Mail, Lock, User } from "lucide-react";
 import { RegisterFormValidator } from "../../lib";
-
+import { Loader } from "../Loader";
 
 interface RegisterFormProps {
+	isLoading: boolean;
   onSubmit: (data: z.infer<typeof RegisterFormValidator>) => void;
 }
 
-export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
+export const RegisterForm = ({ onSubmit, isLoading }: RegisterFormProps) => {
   const {
     register,
     handleSubmit,
@@ -20,9 +21,10 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
 
   return (
     <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-      {/* Username */}
       <div>
-        <label htmlFor="username" className="sr-only">Username</label>
+        <label htmlFor="username" className="sr-only">
+          Username
+        </label>
         <div className="flex items-center">
           <User className="text-gray-500 mr-2" />
           <input
@@ -38,9 +40,10 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
         )}
       </div>
 
-      {/* Email */}
       <div>
-        <label htmlFor="email" className="sr-only">Email address</label>
+        <label htmlFor="email" className="sr-only">
+          Email address
+        </label>
         <div className="flex items-center">
           <Mail className="text-gray-500 mr-2" />
           <input
@@ -56,9 +59,10 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
         )}
       </div>
 
-      {/* Password */}
       <div>
-        <label htmlFor="password" className="sr-only">Password</label>
+        <label htmlFor="password" className="sr-only">
+          Password
+        </label>
         <div className="flex items-center">
           <Lock className="text-gray-500 mr-2" />
           <input
@@ -74,13 +78,21 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
         )}
       </div>
 
-      {/* Submit Button */}
       <button
         type="submit"
-        className="w-full py-2 px-4 bg-gray-900 text-white rounded-md hover:bg-primary-dark focus:ring-primary"
+        disabled={isLoading}
+        className={`${
+          isLoading ? "bg-gray-400" : "bg-gray-900"
+        } w-full py-2 px-4 text-white rounded-md hover:bg-primary-dark focus:ring-primary`}
       >
         Register
       </button>
+
+      {isLoading ? (
+        <div className="w-full flex justify-center items-center">
+          <Loader />
+        </div>
+      ) : null}
     </form>
   );
 };

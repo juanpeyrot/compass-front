@@ -3,13 +3,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Mail, Lock } from "lucide-react";
 import { LoginFormValidator } from "../../lib";
-
+import { Loader } from "../Loader";
 
 interface LoginFormProps {
+  isLoading: boolean;
   onSubmit: (data: z.infer<typeof LoginFormValidator>) => void;
 }
 
-export const LoginForm = ({ onSubmit }: LoginFormProps) => {
+export const LoginForm = ({ onSubmit, isLoading }: LoginFormProps) => {
   const {
     register,
     handleSubmit,
@@ -38,7 +39,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
           <p className="text-red-500 text-sm">{errors.email.message}</p>
         )}
       </div>
-			
+
       <div>
         <label htmlFor="password" className="sr-only">
           Password
@@ -60,10 +61,19 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
 
       <button
         type="submit"
-        className="w-full py-2 px-4 bg-gray-900 text-white rounded-md hover:bg-primary-dark focus:ring-primary"
+        disabled={isLoading}
+        className={`${
+          isLoading ? "bg-gray-400" : "bg-gray-900"
+        } w-full py-2 px-4 text-white rounded-md hover:bg-primary-dark focus:ring-primary`}
       >
         Sign in
       </button>
+
+      {isLoading ? (
+        <div className="w-full flex justify-center items-center">
+          <Loader />
+        </div>
+      ) : null}
     </form>
   );
 };
