@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { User, Mail, Download, Trash2 } from "lucide-react"
+import { User, Mail, Trash2 } from "lucide-react"
 
 export const UserSettings = () => {
   const [user, setUser] = useState({

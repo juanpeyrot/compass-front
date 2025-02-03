@@ -11,7 +11,7 @@ export const Dashboard = () => {
 
   return (
     <div className="bg-gray-900 min-h-screen">
-      <div className="bg-gray-100 container mx-auto px-5 md:px-10 py-8 rounded-xl">
+      <div className="bg-gray-100 container mx-auto mb-5 px-5 md:px-10 py-8 rounded-xl">
         <h1 className="text-4xl font-bold text-primary mb-8">Dashboard</h1>
         <div className="flex mb-6 relative border-b-2 border-gray-300">
           <button

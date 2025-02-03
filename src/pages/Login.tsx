@@ -1,10 +1,10 @@
 import { CompassLogo } from "../components/navbar";
 import { useUserStore } from "../store";
-import { useFetch } from "../hooks/useFetch";
+import { useFetch } from "../hooks";
 import { TLoginFormValidator } from "../types/zod";
 import { LoginForm } from "../components/forms";
 import { useNavigate } from "react-router-dom";
-import { LoginUser } from "../types";
+import { LoginUser, User } from "../types";
 import { useEffect } from "react";
 
 export const LoginPage = () => {
@@ -12,7 +12,7 @@ export const LoginPage = () => {
   const { data, loading, error, fetchData } = useFetch<LoginUser>(
     `${import.meta.env.VITE_SERVICE_URL}/auth/login`
   );
-	const { data: loggedUserData, fetchData: fetchLoggedUserData, loading: loadingLoggedUser } = useFetch<LoginUser>(
+	const { data: loggedUserData, fetchData: fetchLoggedUserData, loading: loadingLoggedUser } = useFetch<User>(
     `${import.meta.env.VITE_SERVICE_URL}/auth/me`
   );
 	const navigate = useNavigate();
@@ -36,7 +36,7 @@ export const LoginPage = () => {
 
 	useEffect(() => {
 		if (!loggedUserData) return;
-		setUser(loggedUserData.user);
+		setUser(loggedUserData);
 		navigate("/dashboard");
 	}, [loggedUserData]);
 

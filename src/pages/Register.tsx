@@ -1,7 +1,7 @@
 import { RegisterForm } from "../components/forms";
 import { CompassLogo } from "../components/navbar";
 import { TRegisterFormValidator } from "../types/zod";
-import { useFetch } from "../hooks/useFetch";
+import { useFetch } from "../hooks";
 import { useUserStore } from "../store";
 import { useNavigate } from "react-router-dom";
 import { LoginUser } from "../types";

@@ -1,5 +1,5 @@
 import { LogIn } from "lucide-react";
-import { useFetch } from "../../hooks/useFetch";
+import { useFetch } from "../../hooks";
 import { useEffect } from "react";
 import { useUserStore } from "../../store";
 

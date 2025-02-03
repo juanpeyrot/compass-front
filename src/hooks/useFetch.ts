@@ -1,21 +1,36 @@
 import { useState } from "react";
 
 export const useFetch = <T,>(
-  url: string
+  url: string,
+  initialQuery: Record<string, string | number | boolean> = {}
 ): {
   data: T | null;
   error: string | null;
   loading: boolean;
-  fetchData: (options?: RequestInit) => Promise<void>;
+  fetchData: (options?: RequestInit, query?: Record<string, string | number | boolean>) => Promise<void>;
 } => {
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const fetchData = async (options?: RequestInit) => {
+  const buildQueryString = (query: Record<string, string | number | boolean>) => {
+    const params = new URLSearchParams();
+    Object.entries(query).forEach(([key, value]) => {
+      params.append(key, String(value));
+    });
+    return params.toString();
+  };
+
+  const fetchData = async (
+    options?: RequestInit,
+    query: Record<string, string | number | boolean> = initialQuery
+  ) => {
     try {
       setLoading(true);
-      const response = await fetch(url, {
+      const queryString = buildQueryString(query);
+      const fullUrl = queryString ? `${url}?${queryString}` : url;
+
+      const response = await fetch(fullUrl, {
         credentials: "include",
         headers: { "Content-Type": "application/json" },
         ...options,
