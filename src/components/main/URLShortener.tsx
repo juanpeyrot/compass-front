@@ -3,9 +3,9 @@ import { Link } from "lucide-react";
 import { LinkPublicInfo, TCreateURLFormValidator } from "../../types";
 import { useFetch } from "../../hooks";
 import { ShortURLForm } from "../forms/ShortURLForm";
-import { ShowShortURL } from "../ShowShortURL";
-import { Loader } from "../Loader";
-import { ErrorMessage } from "../ErrorMessage";
+import { ShowShortURL } from "../common/ShowShortURL";
+import { Loader } from "../common/Loader";
+import { ErrorMessage } from "../common";
 
 export const URLShortener = () => {
   const [shortUrl, setShortUrl] = useState("");

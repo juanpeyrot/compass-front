@@ -5,8 +5,8 @@ import { useUserStore } from "../../store";
 import { Eye, Link as LinkIcon, QrCode } from "lucide-react";
 import Pagination from "./Pagination";
 import { ListResponse } from "../../types/common";
-import { Loader } from "../Loader";
-import { ErrorMessage } from "../ErrorMessage";
+import { Loader } from "../common/Loader";
+import { ErrorMessage } from "../common";
 
 export const URLList = () => {
   const { user } = useUserStore();

@@ -4,9 +4,9 @@ import { useFetch } from "../../hooks";
 import { useUserStore } from "../../store";
 import Pagination from "./Pagination";
 import { ListResponse } from "../../types/common";
-import { Loader } from "../Loader";
+import { Loader } from "../common";
 import { Download, Eye, QrCode, User } from "lucide-react";
-import { ErrorMessage } from "../ErrorMessage";
+import { ErrorMessage } from "../common";
 
 export const QrList = () => {
   const { user } = useUserStore();

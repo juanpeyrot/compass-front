@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Mail, Lock } from "lucide-react";
 import { LoginFormValidator } from "../../lib";
-import { Loader } from "../Loader";
+import { Loader } from "../common";
 import { TLoginFormValidator } from "../../types";
 
 interface LoginFormProps {

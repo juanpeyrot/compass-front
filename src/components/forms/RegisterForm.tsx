@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Mail, Lock, User } from "lucide-react";
 import { RegisterFormValidator } from "../../lib";
-import { Loader } from "../Loader";
+import { Loader } from "../common";
 import { TRegisterFormValidator } from "../../types";
 
 interface RegisterFormProps {
