@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { User } from "../types";
-import axios from "axios";
 
 interface IUserStore {
   user: User | null;
@@ -14,7 +13,7 @@ export const useUserStore = create<IUserStore>((set) => ({
   setUser: (u: User) => set({ user: { ...u } }),
   fetchUser: async () => {
     try {
-      const response = await fetch(`${import.meta.env.SERVICE_URL}/auth/me`, {
+      const response = await fetch(`${import.meta.env.VITE_SERVICE_URL}/auth/me`, {
         method: "GET",
         credentials: "include",
       });
