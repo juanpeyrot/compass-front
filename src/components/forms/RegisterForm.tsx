@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { Mail, Lock, User } from "lucide-react";
 import { RegisterFormValidator } from "../../lib";
 import { Loader } from "../Loader";
+import { TRegisterFormValidator } from "../../types";
 
 interface RegisterFormProps {
 	isLoading: boolean;
-  onSubmit: (data: z.infer<typeof RegisterFormValidator>) => void;
+  onSubmit: (data: TRegisterFormValidator) => void;
 }
 
 export const RegisterForm = ({ onSubmit, isLoading }: RegisterFormProps) => {
@@ -15,7 +15,7 @@ export const RegisterForm = ({ onSubmit, isLoading }: RegisterFormProps) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<z.infer<typeof RegisterFormValidator>>({
+  } = useForm<TRegisterFormValidator>({
     resolver: zodResolver(RegisterFormValidator),
   });
 

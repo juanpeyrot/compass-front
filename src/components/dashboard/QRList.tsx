@@ -6,6 +6,7 @@ import Pagination from "./Pagination";
 import { ListResponse } from "../../types/common";
 import { Loader } from "../Loader";
 import { Download, Eye, QrCode, User } from "lucide-react";
+import { ErrorMessage } from "../ErrorMessage";
 
 export const QrList = () => {
   const { user } = useUserStore();
@@ -42,11 +43,7 @@ export const QrList = () => {
   }
 
 	if (error) {
-		return (
-			<div className="w-full flex justify-center items-center">
-				<p className="text-red-500">{error}</p>
-			</div>
-		)
+		return <ErrorMessage error={error} />
 	}
 
   return (

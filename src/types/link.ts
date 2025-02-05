@@ -13,3 +13,15 @@ export interface Link {
 	createdBy: UserPublicInfo,
 	qr?: Qr
 }
+
+export interface LinkPublicInfo {
+	id: string;
+	shortUrl: string;
+	link: string;
+	createdAt: Date;
+	isProtected: boolean;
+	description: string;
+	clicks: number;
+	createdBy: UserPublicInfo;
+	qr: Qr
+}

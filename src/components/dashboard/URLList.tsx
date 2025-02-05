@@ -6,6 +6,7 @@ import { Eye, Link as LinkIcon, QrCode } from "lucide-react";
 import Pagination from "./Pagination";
 import { ListResponse } from "../../types/common";
 import { Loader } from "../Loader";
+import { ErrorMessage } from "../ErrorMessage";
 
 export const URLList = () => {
   const { user } = useUserStore();
@@ -43,11 +44,7 @@ export const URLList = () => {
   }
 
 	if (error) {
-		return (
-			<div className="w-full flex justify-center items-center">
-				<p className="text-red-500">{error}</p>
-			</div>
-		)
+		return <ErrorMessage error={error} />
 	}
 
   return (
