@@ -2,6 +2,7 @@ import { ServiceEnum } from "../../types";
 import { PlusCircle } from "lucide-react";
 import { CustomModal } from "../modals/CustomModal";
 import { useState } from "react";
+import { ShortURLForm } from "../forms/ShortURLForm";
 
 interface CreateNewButtonProps {
   selected: ServiceEnum;
@@ -24,10 +25,15 @@ export const CreateNewButton = ({ selected }: CreateNewButtonProps) => {
         isOpen={clicked && selected === ServiceEnum.URL}
         onClose={() => setClicked(false)}
       >
-        URL
+        <article className="p-8">
+          <h2 className="text-2xl font-bold mb-4 flex items-center text-primary">
+            Shorten a new URL
+          </h2>
+          <ShortURLForm includeQrGenerator={true} />
+        </article>
       </CustomModal>
 
-			<CustomModal
+      <CustomModal
         isOpen={clicked && selected === ServiceEnum.QR}
         onClose={() => setClicked(false)}
       >

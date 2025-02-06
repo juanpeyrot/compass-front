@@ -19,7 +19,6 @@ export const URLList = () => {
 
   useEffect(() => {
     if (!user) return;
-		console.log(user)
     fetchData(
       {},
       {

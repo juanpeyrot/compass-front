@@ -19,7 +19,7 @@ export const ShowShortURL = ({ shortUrl }: ShowShortURLProps) => {
     <div className="mt-2 flex items-center gap-2 bg-white p-2 rounded-lg shadow-sm w-full max-w-md">
       <input
         type="text"
-        value={shortUrl}
+        value={`${window.location.origin}/${shortUrl}`}
         readOnly
         className="w-full text-gray-700 text-sm px-2 outline-none bg-transparent"
       />

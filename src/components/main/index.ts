@@ -1,3 +1,3 @@
-export * from './QRGenerator';
+export * from '../forms/QRForm';
 export * from './Switch';
 export * from './URLShortener';

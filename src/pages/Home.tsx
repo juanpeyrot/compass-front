@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Hero } from "../components/hero";
-import { QRGenerator, Switch, URLShortener } from "../components/main";
+import { QRForm, Switch, URLShortener } from "../components/main";
 import { ServiceEnum } from "../types";
 
 export const HomePage = () => {
@@ -12,7 +12,7 @@ export const HomePage = () => {
         <div className="container mx-auto px-4 py-12">
           <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6">
             <Switch activeTab={activeTab} setActiveTab={setActiveTab} />
-            {activeTab === "url" ? <URLShortener /> : <QRGenerator />}
+            {activeTab === "url" ? <URLShortener /> : <QRForm />}
           </div>
         </div>
       </main>
