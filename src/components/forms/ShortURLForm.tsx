@@ -19,6 +19,7 @@ export const ShortURLForm = ({
     register,
     handleSubmit,
     formState: { errors },
+		reset,
   } = useForm<TCreateURLFormValidator>({
     resolver: zodResolver(CreateURLFormValidator),
   });
@@ -32,6 +33,7 @@ export const ShortURLForm = ({
       method: "POST",
       body: JSON.stringify(formData),
     });
+		reset();
   };
 
   useEffect(() => {
@@ -41,9 +43,11 @@ export const ShortURLForm = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="link-url" className="block text-gray-700">Original URL</label>
+      <label htmlFor="link-url" className="block text-gray-700">
+        Original URL
+      </label>
       <input
-				id="link-url"
+        id="link-url"
         type="text"
         {...register("link")}
         placeholder="https://my-url.com"
@@ -53,27 +57,33 @@ export const ShortURLForm = ({
         <p className="text-red-500 text-sm">{errors.link.message}</p>
       )}
 
-      <label htmlFor="custom-link" className="block text-gray-700">Custom link name (optional)</label>
+      <label htmlFor="custom-link" className="block text-gray-700">
+        Custom link name (optional)
+      </label>
       <input
-				id="custom-link"
+        id="custom-link"
         type="text"
         {...register("customShortUrl")}
         placeholder="MyAwesomeLink123"
         className="w-full p-2 mb-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent"
       />
 
-      <label htmlFor="url-password" className="block text-gray-700">Password (optional)</label>
+      <label htmlFor="url-password" className="block text-gray-700">
+        Password (optional)
+      </label>
       <input
-				id="url-password"
+        id="url-password"
         type="password"
         {...register("password")}
         placeholder="Password"
         className="w-full p-2 mb-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent"
       />
 
-      <label htmlFor="url-description" className="block text-gray-700">Description (optional)</label>
+      <label htmlFor="url-description" className="block text-gray-700">
+        Description (optional)
+      </label>
       <textarea
-				id="url-description"
+        id="url-description"
         {...register("description")}
         placeholder="This link redirects to my personal landing page"
         className="w-full resize-y min-h-12 max-h-48 p-2 mb-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent"
@@ -81,9 +91,15 @@ export const ShortURLForm = ({
       />
 
       {includeQrGenerator && (
-        <div className="mb-2 flex items-center">
-          <input type="checkbox" {...register("includeQr")} className="mr-2" />
-          <label className="text-gray-700">Generate QR Code</label>
+        <div className="mb-4 flex items-center bg-gray-100 p-2 rounded-md border border-gray-300">
+          <input
+            type="checkbox"
+            {...register("includeQr")}
+            className="mr-2 w-5 h-5 text-accent focus:ring-accent border-gray-300 rounded"
+          />
+          <label className="text-gray-700 text-sm font-medium">
+            Generate QR Code for this link
+          </label>
         </div>
       )}
 

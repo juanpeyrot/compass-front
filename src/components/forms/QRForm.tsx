@@ -14,6 +14,7 @@ export const QRForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+		reset,
   } = useForm<TCreateQRFormValidator>({
     resolver: zodResolver(CreateQRFormValidator),
   });
@@ -23,6 +24,7 @@ export const QRForm = () => {
       method: "POST",
       body: JSON.stringify(data),
     });
+		reset();
   };
 
   return (
