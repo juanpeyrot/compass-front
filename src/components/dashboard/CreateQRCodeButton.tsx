@@ -5,9 +5,10 @@ import { useEffect } from "react";
 
 interface CreateQRCodeButtonProps {
   link: Link;
+	handleRefresh: () => Promise<void>;
 }
 
-export const CreateQRCodeButton = ({ link }: CreateQRCodeButtonProps) => {
+export const CreateQRCodeButton = ({ link, handleRefresh }: CreateQRCodeButtonProps) => {
   const { data, error, loading, fetchData } = useFetch<Qr>(
     `${import.meta.env.VITE_SERVICE_URL}/qrs`
   );
@@ -28,6 +29,8 @@ export const CreateQRCodeButton = ({ link }: CreateQRCodeButtonProps) => {
 				belongsToCustomLink: true, 
 			}),
     });
+
+		await handleRefresh();
   };
 
   return (

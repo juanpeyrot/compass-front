@@ -1,24 +1,36 @@
 import { useState } from "react";
 import { Copy, Eye, LinkIcon, Lock } from "lucide-react";
-import { Link } from "../../types";
+import { Link, LinkPublicInfo, Qr } from "../../types";
 import { CreateQRCodeButton } from "./CreateQRCodeButton";
 import { ViewQRButton } from "./ViewQRButton";
+import { useFetch } from "../../hooks";
+import { Loader } from "../common";
 
 interface URLCardProps {
   item: Link;
 }
 
 export const URLCard = ({ item }: URLCardProps) => {
+  const { data, fetchData, loading } = useFetch<LinkPublicInfo>(
+    `${import.meta.env.VITE_SERVICE_URL}/links/${item.id}`
+  );
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(`${import.meta.env.VITE_SERVICE_URL}/${item.shortUrl}`);
+    navigator.clipboard.writeText(
+      `${import.meta.env.VITE_SERVICE_URL}/${item.shortUrl}`
+    );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <li className="border rounded-md p-4 shadow-sm bg-white">
+    <li className="relative border rounded-md p-4 shadow-sm bg-white">
+      {loading && (
+        <div className="absolute inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center z-10">
+          <Loader />
+        </div>
+      )}
       <div className="flex flex-col sm:flex-row items-center sm:justify-between mb-2">
         <div className="flex items-center">
           <LinkIcon size={18} className="mr-2 text-primary" />
@@ -28,10 +40,10 @@ export const URLCard = ({ item }: URLCardProps) => {
           <div className="flex items-center text-gray-600 text-sm">
             <Eye className="mr-1" size={16} /> {item.clicks} clicks
           </div>
-          {item.qr ? (
-            <ViewQRButton qr={item.qr} />
+          {item.qr || data?.qr ? (
+            <ViewQRButton qr={item.qr || (data?.qr as Qr)} />
           ) : (
-            <CreateQRCodeButton link={item} />
+            <CreateQRCodeButton link={item} handleRefresh={fetchData} />
           )}
         </div>
       </div>
@@ -45,7 +57,10 @@ export const URLCard = ({ item }: URLCardProps) => {
 
       <p className="text-sm text-gray-600">
         <strong>Short URL:</strong>{" "}
-        <a href={`${import.meta.env.VITE_SERVICE_URL}/${item.shortUrl}`} className="text-accent hover:underline">
+        <a
+          href={`${import.meta.env.VITE_SERVICE_URL}/${item.shortUrl}`}
+          className="text-accent hover:underline"
+        >
           {`${import.meta.env.VITE_SERVICE_URL}/${item.shortUrl}`}
         </a>
       </p>
