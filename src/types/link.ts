@@ -25,3 +25,8 @@ export interface LinkPublicInfo {
 	createdBy: UserPublicInfo;
 	qr: Qr
 }
+
+export interface LinkRedirect {
+	protected: boolean;
+	url: string;
+}

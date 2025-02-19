@@ -8,7 +8,7 @@ export const ShowShortURL = ({ shortUrl }: ShowShortURLProps) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(shortUrl);
+    navigator.clipboard.writeText(`${window.location.origin}/${shortUrl}`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

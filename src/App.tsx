@@ -7,8 +7,9 @@ import {
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { Dashboard, LoginPage, HomePage, RegisterPage } from "./pages";
-import { ProtectedRoute } from "./pages/ProtectedRoute";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./components/AuthProvider";
+import { AccessLink } from "./pages/AccessLink";
 
 export const App = () => {
   return (
@@ -23,6 +24,7 @@ export const App = () => {
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+						<Route path="/:shortUrl" element={<AccessLink />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />

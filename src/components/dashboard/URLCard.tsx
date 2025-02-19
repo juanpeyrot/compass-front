@@ -18,7 +18,7 @@ export const URLCard = ({ item }: URLCardProps) => {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(
-      `${import.meta.env.VITE_SERVICE_URL}/${item.shortUrl}`
+      `${window.location.origin}/${item.shortUrl}`
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
