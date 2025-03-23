@@ -30,3 +30,8 @@ export interface LinkRedirect {
 	protected: boolean;
 	url: string;
 }
+
+export interface ProtectedLinkRedirect {
+	isPasswordCorrect: boolean;
+	url: string;
+}
