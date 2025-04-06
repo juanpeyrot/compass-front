@@ -4,6 +4,7 @@ import { Mail, Lock } from "lucide-react";
 import { LoginFormValidator } from "../../lib";
 import { Loader } from "../common";
 import { TLoginFormValidator } from "../../types";
+import { LoginProviders } from "./LoginProviders";
 
 interface LoginFormProps {
   isLoading: boolean;
@@ -73,7 +74,7 @@ export const LoginForm = ({ onSubmit, isLoading }: LoginFormProps) => {
         <div className="w-full flex justify-center items-center">
           <Loader />
         </div>
-      ) : null}
+      ) : <LoginProviders />}
     </form>
   );
 };
