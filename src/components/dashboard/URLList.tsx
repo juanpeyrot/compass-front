@@ -8,7 +8,7 @@ import { Loader } from "../common/Loader";
 import { ErrorMessage } from "../common";
 import { URLCard } from "./URLCard";
 
-export const URLList = () => {
+export const URLList = ({ refreshKey }: { refreshKey: number }) => {
   const { user } = useUserStore();
   const [links, setLinks] = useState<Link[]>([]);
   const [limit] = useState(5);
@@ -27,7 +27,7 @@ export const URLList = () => {
         offset: offset,
       }
     );
-  }, [user, limit, offset]);
+  }, [user, limit, offset, refreshKey]);
 
   useEffect(() => {
     if (!data) return;

@@ -9,11 +9,13 @@ import { ErrorMessage, Loader } from "../common";
 interface ShortURLFormProps {
   callbackFunction?: (data: LinkPublicInfo) => void;
   includeQrGenerator: boolean;
+	onCreated: () => void;
 }
 
 export const ShortURLForm = ({
   includeQrGenerator,
   callbackFunction,
+	onCreated,
 }: ShortURLFormProps) => {
   const {
     register,
@@ -33,11 +35,12 @@ export const ShortURLForm = ({
       method: "POST",
       body: JSON.stringify(formData),
     });
-		reset();
   };
 
   useEffect(() => {
     if (!data) return;
+		onCreated();
+		reset();
     callbackFunction && callbackFunction(data);
   }, [data]);
 

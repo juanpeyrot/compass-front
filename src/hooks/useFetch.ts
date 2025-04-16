@@ -27,6 +27,7 @@ export const useFetch = <T,>(
   ) => {
     try {
       setLoading(true);
+			setError(null);
       const queryString = buildQueryString(query);
       const fullUrl = queryString ? `${url}?${queryString}` : url;
 
@@ -43,7 +44,6 @@ export const useFetch = <T,>(
 
       const jsonData = await response.json();
       setData(jsonData);
-      setError(null);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unknown error");
       setData(null);

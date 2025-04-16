@@ -7,7 +7,7 @@ import { Loader } from "../components/common";
 export const AccessLink = () => {
   const navigate = useNavigate();
   const { shortUrl } = useParams();
-  const { data, fetchData, loading } = useFetch<LinkRedirect>(
+  const { data, error, fetchData, loading } = useFetch<LinkRedirect>(
     `${import.meta.env.VITE_SERVICE_URL}/links/access/${shortUrl}`
   );
 
@@ -23,6 +23,12 @@ export const AccessLink = () => {
     }
     window.location.href = data.url;
   }, [data]);
+
+	useEffect(() => {
+		if (error) {
+			navigate("/");
+		}
+	}, [error])
 
   return (
     <div className="min-h-screen">

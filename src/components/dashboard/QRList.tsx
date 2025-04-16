@@ -8,7 +8,7 @@ import { Loader } from "../common";
 import { ErrorMessage } from "../common";
 import { QRCard } from "./QRCard";
 
-export const QrList = () => {
+export const QrList = ({ refreshKey }: { refreshKey: number }) => {
   const { user } = useUserStore();
   const [qrs, setQrs] = useState<Qr[]>([]);
   const [limit] = useState(5);
@@ -27,7 +27,7 @@ export const QrList = () => {
         offset: offset,
       }
     );
-  }, [user, limit, offset]);
+  }, [user, limit, offset, refreshKey]);
 
   useEffect(() => {
     if (!data) return;

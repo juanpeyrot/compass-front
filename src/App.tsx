@@ -24,8 +24,8 @@ export const App = () => {
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-						<Route path="/:shortUrl" element={<AccessLink />} />
 						<Route path="/access-protected/:shortUrl" element={<AccessProtectedLink />} />
+						<Route path="/:shortUrl" element={<AccessLink />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />
