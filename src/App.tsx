@@ -10,6 +10,7 @@ import { Dashboard, LoginPage, HomePage, RegisterPage, AccessProtectedLink } fro
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./components/AuthProvider";
 import { AccessLink } from "./pages/AccessLink";
+import { AccessQR } from "./pages/AccessQR";
 
 export const App = () => {
   return (
@@ -25,6 +26,7 @@ export const App = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
 						<Route path="/access-protected/:shortUrl" element={<AccessProtectedLink />} />
+						<Route path="/track-qr" element={<AccessQR />}/>
 						<Route path="/:shortUrl" element={<AccessLink />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>

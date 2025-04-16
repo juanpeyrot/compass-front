@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CreateURLFormValidator } from "../../lib";
 import { useFetch } from "../../hooks";
-import { useEffect } from "react";
-import { ErrorMessage, Loader } from "../common";
+import { useEffect, useState } from "react";
+import { ErrorMessage, Loader, SuccessMessage } from "../common";
 
 interface ShortURLFormProps {
   callbackFunction?: (data: LinkPublicInfo) => void;
@@ -29,6 +29,7 @@ export const ShortURLForm = ({
   const { data, error, loading, fetchData } = useFetch<LinkPublicInfo>(
     `${import.meta.env.VITE_SERVICE_URL}/links`
   );
+	const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const onSubmit = async (formData: TCreateURLFormValidator) => {
     await fetchData({
@@ -38,7 +39,9 @@ export const ShortURLForm = ({
   };
 
   useEffect(() => {
+		setSuccessMessage(null);
     if (!data) return;
+		setSuccessMessage("Link created successfully!");
 		onCreated();
 		reset();
     callbackFunction && callbackFunction(data);
@@ -119,6 +122,12 @@ export const ShortURLForm = ({
       {loading ? (
         <div className="w-full flex justify-center items-center m-4">
           <Loader />
+        </div>
+      ) : null}
+
+			{successMessage ? (
+        <div className="w-full flex justify-center items-center m-4">
+          <SuccessMessage message={successMessage} />
         </div>
       ) : null}
 
