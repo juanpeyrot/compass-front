@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export const GoogleLoginButton = () => {
 
-	const { data, loading, error, fetchData } = useFetch<any>(`${import.meta.env.VITE_SERVICE_URL}/auth/google`);
+	const { data, fetchData } = useFetch<any>(`${import.meta.env.VITE_SERVICE_URL}/auth/google`);
 	const navigate = useNavigate();
 
   const handleGoogleSuccess = async (credentialResponse: any) => {

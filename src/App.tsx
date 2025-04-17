@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
-import { Dashboard, LoginPage, HomePage, RegisterPage, AccessProtectedLink } from "./pages";
+import { Dashboard, LoginPage, HomePage, RegisterPage, AccessProtectedLink, GithubAuth } from "./pages";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./components/AuthProvider";
 import { AccessLink } from "./pages/AccessLink";
@@ -25,6 +25,7 @@ export const App = () => {
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+						<Route path="/github-auth" element={<GithubAuth />} />
 						<Route path="/access-protected/:shortUrl" element={<AccessProtectedLink />} />
 						<Route path="/track-qr" element={<AccessQR />}/>
 						<Route path="/:shortUrl" element={<AccessLink />} />
