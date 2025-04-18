@@ -13,7 +13,7 @@ const Pagination = ({
   totalItems,
   onPageChange,
 }: PaginationProps) => {
-  const totalPages = Math.ceil(totalItems / limit);
+  const totalPages = Math.ceil((Math.max(totalItems, 1)) / limit);
   const currentPage = Math.floor(offset / limit) + 1;
 
   return (
