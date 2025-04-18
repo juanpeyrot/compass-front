@@ -1,4 +1,4 @@
-import { Download, Eye, QrCode, User } from "lucide-react";
+import { Download, Eye, QrCode } from "lucide-react";
 import { Qr } from "../../types";
 
 interface QRCardProps {
@@ -51,11 +51,7 @@ export const QRCard = ({ qr, className }: QRCardProps) => {
       </p>
 
       <p className="text-sm text-gray-500 mt-2 flex items-center flex-wrap">
-        <User size={16} className="mr-1 text-gray-500" />
-        Created by:{" "}
-        <span className="font-semibold ml-1">
-          {qr.createdBy.username}
-        </span> on {new Date(qr.createdAt).toLocaleDateString()}
+        {new Date(qr.createdAt).toLocaleDateString()}
       </p>
     </li>
   );

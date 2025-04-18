@@ -77,8 +77,6 @@ export const URLCard = ({ item }: URLCardProps) => {
       </p>
 
       <p className="text-sm text-gray-500 mt-2">
-        Created by:{" "}
-        <span className="font-semibold">{item.createdBy.username}</span> on{" "}
         {new Date(item.createdAt).toLocaleDateString()}
       </p>
 
