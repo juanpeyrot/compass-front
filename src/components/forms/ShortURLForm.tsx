@@ -9,7 +9,7 @@ import { ErrorMessage, Loader, SuccessMessage } from "../common";
 interface ShortURLFormProps {
   callbackFunction?: (data: LinkPublicInfo) => void;
   includeQrGenerator: boolean;
-	onCreated: () => void;
+	onCreated?: () => void;
 }
 
 export const ShortURLForm = ({
@@ -42,7 +42,7 @@ export const ShortURLForm = ({
 		setSuccessMessage(null);
     if (!data) return;
 		setSuccessMessage("Link created successfully!");
-		onCreated();
+		onCreated && onCreated();
 		reset();
     callbackFunction && callbackFunction(data);
   }, [data]);
