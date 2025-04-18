@@ -3,7 +3,7 @@ import { CompassLogo } from "../components/navbar";
 import { TRegisterFormValidator } from "../types/zod";
 import { useFetch } from "../hooks";
 import { useUserStore } from "../store";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginUser } from "../types";
 import { useEffect } from "react";
 
@@ -40,6 +40,15 @@ export const RegisterPage = () => {
         {error && <p className="text-center text-red-500">{error}</p>}
 
         <RegisterForm isLoading={loading} onSubmit={onSubmit} />
+				<p className="text-center text-gray-500 text-sm">
+					Already registered?{" "}
+					<Link
+						to="/login"
+						className="text-primary hover:text-primary-dark font-semibold"
+					>
+						Log in
+					</Link>
+				</p>
       </div>
     </div>
   );

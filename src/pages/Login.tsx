@@ -3,7 +3,7 @@ import { useUserStore } from "../store";
 import { useFetch } from "../hooks";
 import { TLoginFormValidator } from "../types/zod";
 import { LoginForm } from "../components/forms";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginUser, User } from "../types";
 import { useEffect } from "react";
 
@@ -57,6 +57,15 @@ export const LoginPage = () => {
         </h2>
 				{error && <p className="text-center text-red-500">{error}</p>}
         <LoginForm isLoading={loading || loadingLoggedUser} onSubmit={onSubmit} />
+				<p className="text-center text-gray-500 text-sm">
+					Don't have an account?{" "}
+					<Link
+						to="/register"
+						className="text-primary hover:text-primary-dark font-semibold"
+					>
+						Sign up
+					</Link>
+				</p>
       </div>
     </div>
   );
