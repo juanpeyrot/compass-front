@@ -58,10 +58,11 @@ export const URLCard = ({ item }: URLCardProps) => {
       <p className="text-sm text-gray-600">
         <strong>Short URL:</strong>{" "}
         <a
-          href={`${import.meta.env.VITE_SERVICE_URL}/${item.shortUrl}`}
+          href={`${import.meta.env.VITE_URL}/${item.shortUrl}`}
           className="text-accent hover:underline"
+          target="_blank"
         >
-          {`${import.meta.env.VITE_SERVICE_URL}/${item.shortUrl}`}
+          {`${import.meta.env.VITE_URL}/${item.shortUrl}`}
         </a>
       </p>
 
